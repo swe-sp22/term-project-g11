@@ -23,3 +23,7 @@ Route::get('/signin', function () {
 Route::get('/signup', function () {
     return view('register');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
