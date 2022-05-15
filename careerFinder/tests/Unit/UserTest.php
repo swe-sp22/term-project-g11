@@ -24,20 +24,6 @@ class UserTest extends TestCase
     }
 
     //Checking validation
-    public function test_user_duplication()
-    {
-        // make sure there are no duplicate emails
-        $user1 = Users::make([
-            'name' => 'John Doe',
-            'email' =>'johndoe@gmail.com'
-        ]);
-        $user2 = Users::make([
-            'name' => 'selmy',
-            'email' =>'johndoe@gmail.com'
-        ]);
-
-        $this->assertTrue($user1->name != $user2->name);
-    }
     
     public function test_database()
     {

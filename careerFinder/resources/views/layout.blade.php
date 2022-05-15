@@ -24,8 +24,8 @@
 
         <nav class="navbar">
             @yield('navLinks')
-            <a href="{{ url('/signin') }}" class="sign-in">LogIn</a>
-            <a href="{{ url('/signup') }}" class="sign-in">Register</a>
+            <a href="{{ route('login') }}" class="sign-in">LogIn</a>
+            <a href="{{ route('register') }}" class="sign-in">Register</a>
         </nav>
     </header>
 

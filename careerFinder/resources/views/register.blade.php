@@ -7,13 +7,13 @@
 @endsection
 
 @section('navLinks')
-<a href="{{ url('/') }}">back home</a>
+<a href="{{ route('homePage') }}">back home</a>
 @endsection
 
 
 @section('content')
 <section class="signup">
-    <form action="" method="">
+    <form action="{{ route('register.action') }}" method="POST">
         @csrf
         <h1 class="heading">Register</h1>
         <div class="inputBox">
@@ -32,7 +32,7 @@
             <input type="password" name="confirmpassword">
             <label for="confirmpassword">confirm password<span class="requiredF">*</span></label>
         </div>
-        <p>Have an account? <a href="{{ url('/signin') }}" class="alignA">LogIn</a>.</p>
+        <p>Have an account? <a href="{{ route('login') }}" class="alignA">LogIn</a>.</p>
         <input type="submit" class="btn" value="sign up">
     </form>
 </section>
