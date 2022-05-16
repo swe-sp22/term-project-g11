@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Users;
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     public function home()
@@ -19,7 +22,26 @@ class UserController extends Controller
         return view('login');
     }
     public function register_action(Request $request){
-
+        // validate requests
+        $request->validate([
+            'name' => 'required||max:30',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|max:12',
+            'confirmpassword' => 'required|same:password',
+        ]);
+        // insert data into database
+        $user = new Users([
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'role' => 3,
+        ]);
+        $save = $user->save();
+        if($save){
+            return redirect()->route('login')->with('success', 'Registration success. Please login!');
+        }else{
+            return back()->with('fail', 'Something went wrong try again later!');
+        }
     }
     public function login_action(Request $request){
 

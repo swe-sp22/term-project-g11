@@ -32,15 +32,13 @@
 
 .signup form .inputBox label{
     position: absolute;
-    top: 1.7rem;
+    top: -.5rem;
     left: 0;
     font-size: 1.7rem;
     color: #666;
     transition: .2s linear;
 }
 .signup form .inputBox input:focus ~ label{
-    top: -.5rem;
-    font-size: 1.5rem;
     color: var(--blue);
 }
 #dob{
@@ -58,4 +56,17 @@
 }
 .requiredF{
     color: #BD0000;
+}
+
+.danger {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    font-size: 1.7rem;
+    padding: 20px;
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    font-size: 1.7rem;
+    padding: 20px;
 }
