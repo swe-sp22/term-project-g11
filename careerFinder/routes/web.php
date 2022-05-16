@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\adminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::post('/login', [UserController::class, 'login_action'])->name('login.acti
 
 # logout
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+#admin
+Route::get('/adminDashboard', [adminController::class, 'adminHome'])->name('adminRoute');
