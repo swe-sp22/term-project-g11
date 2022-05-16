@@ -44,6 +44,40 @@ class UserController extends Controller
         }
     }
     public function login_action(Request $request){
+        // validate requests
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:5|max:12',
+        ]);
+        // get user from database
+        $userInfo = Users::where('email','=',$request->email)->first();
+        if(!$userInfo){
+            return back()->with('fail', 'We do not recognize your email address!');
+        }else{
+            // check password
+            if(Hash::check($request->password, $userInfo->password)){
+                // set user ID into session
+                $request->session()->put('LoggedUser', $userInfo->userID);
+                if($userInfo->role == 1){
+                    //return redirect()->route('adminDashboard');
+                    return $userInfo->role;
+                }else if($userInfo->role == 2){
+                    //return redirect()->route('companyDashboard');
+                    return $userInfo->role;
+                }else{
+                    //return redirect()->route('jobseekerDashboard');
+                    return $userInfo->role;
+                }
+            }else{
+                return back()->with('fail', 'Incorrect password Please Try again');
+            }
+        }
 
+    }
+    public function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect()->route('homePage');
+        }
     }
 }

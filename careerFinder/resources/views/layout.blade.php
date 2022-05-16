@@ -24,8 +24,12 @@
 
         <nav class="navbar">
             @yield('navLinks')
+            @if(session('LoggedUser'))
+            <a href="{{ route('logout') }}" class="sign-in">Logout</a>
+            @else
             <a href="{{ route('login') }}" class="sign-in">LogIn</a>
             <a href="{{ route('register') }}" class="sign-in">Register</a>
+            @endif
         </nav>
     </header>
 
