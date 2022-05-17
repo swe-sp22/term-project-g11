@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -11,13 +12,10 @@ class adminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminHome()
-    {
-        return view('adminDashboard');
-    }
+
     public function index()
     {
-        //
+        return view('admin.index')->with('count', DB::table('users')->where('userID', 3)->count());
     }
 
     /**

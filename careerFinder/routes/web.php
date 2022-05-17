@@ -30,7 +30,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     # login & register view
     Route::get('/register', [UserController::class, 'register'])->name('register');
     Route::get('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/adminDashboard', [adminController::class, 'adminHome'])->name('adminRoute');
+    Route::get('/admin/index', [adminController::class, 'index'])->name('adminRoute');
     # company
     # jobSeeker
 });
