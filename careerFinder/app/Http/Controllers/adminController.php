@@ -15,7 +15,11 @@ class adminController extends Controller
 
     public function index()
     {
-        return view('admin.index')->with('count', DB::table('users')->where('userID', 3)->count());
+        $count = DB::table('users')->where('role', 2)->count();
+        $cols = DB::table('users')->select('userID','name')->where('role',2)->get();
+        $data['count'] = $count;
+        $data['companies'] = $cols;
+        return view('admin.index',$data);
     }
 
     /**
