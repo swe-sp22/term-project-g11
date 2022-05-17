@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->unsignedBigInteger('jobPostID');
             $table->unsignedBigInteger('jobSeekerID');
+            $table->string('applicantName',30);
             $table->string('email');
             $table->integer('phoneNumber');
             $table->string('faculty');
             $table->year('graduationYear');
             $table->text('experience');
             $table->text('coverLetter');
-
+            $table->timestamps();
             $table->primary(['jobPostID','jobSeekerID']);
             $table->foreign('jobPostID')->references('jobID')->on('job_posts');
             $table->foreign('jobSeekerID')->references('userID')->on('users');

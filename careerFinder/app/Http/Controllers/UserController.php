@@ -62,8 +62,8 @@ class UserController extends Controller
                     //return redirect()->route('adminDashboard');
                     return redirect()->route('adminRoute');
                 }else if($userInfo->role == 2){
-                    //return redirect()->route('companyDashboard');
-                    return $userInfo->role;
+                    return redirect()->route('companyDashboard');
+                    //return $userInfo->role;
                 }else{
                     //return redirect()->route('jobseekerDashboard');
                     return $userInfo->role;

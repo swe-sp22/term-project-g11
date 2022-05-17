@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::get('/adminDashboard', [adminController::class, 'adminHome'])->name('adminRoute');
     # company
+    Route::get('/dashboard', [CompanyController::class, 'companyHomePage'])->name('companyDashboard');
+    Route::get('/postJob', [CompanyController::class, 'postJob'])->name('postJob');
+    Route::post('/postJob', [CompanyController::class, 'postJob_action'])->name('postJob.action');
     # jobSeeker
 });

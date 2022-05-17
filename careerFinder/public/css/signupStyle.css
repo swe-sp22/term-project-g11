@@ -19,7 +19,7 @@
     position: relative;
 }
 
-.signup form .inputBox input{
+.signup form .inputBox input, .signup form .inputBox textarea{
     width: 100%;
     background: none;
     color: #666;
@@ -30,6 +30,11 @@
     text-transform: none;
 }
 
+.signup form .inputBox textarea{
+    resize: none;
+    height: 13rem;
+}
+
 .signup form .inputBox label{
     position: absolute;
     top: -.5rem;
@@ -38,12 +43,8 @@
     color: #666;
     transition: .2s linear;
 }
-.signup form .inputBox input:focus ~ label{
+.signup form .inputBox input:focus ~ label,.signup form .inputBox textarea:focus ~ label{
     color: var(--blue);
-}
-#dob{
-    top: -.5rem;
-    font-size: 1.5rem;
 }
 .alignA {
     color: var(--blue);

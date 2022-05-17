@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('job_posts', function (Blueprint $table) {
             $table->bigIncrements('jobID');
             $table->string('jobTitle');
+            $table->string('jobLocation');
             $table->text('jobDescription');
+            $table->text('jobRequirments');
             $table->unsignedBigInteger('companyID');
             $table->unsignedBigInteger('categoryID');
             $table->date('deadline');
-            
+            $table->timestamps();
             $table->foreign('companyID')->references('userID')->on('users');
             $table->foreign('categoryID')->references('categoryID')->on('job_categories');
         });
