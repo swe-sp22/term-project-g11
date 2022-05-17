@@ -34,3 +34,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     # company
     # jobSeeker
 });
+
+//add new company route
+Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
+
+//Store form data in DB route
+Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');

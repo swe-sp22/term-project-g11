@@ -11,10 +11,6 @@
 </script>
 @endsection
 
-@section('navLinks')
-<a href="{{ route('homePage') }}">back home</a>
-@endsection
-
 @section('content')
 <section class="container">
     <div class ="heading">
@@ -24,7 +20,7 @@
         <h2 class = "totalCompanies">Number of registered companies: </h2>
         <h2 class = "totalCompanies" id = "no_of_companies">{{ $count }}</h2>
         <button id="viewBTN" class = "buttons" onclick="handleClick()">View All Companies</button>
-        <button class = "buttons" name = "addBTN">Add New Company</button>
+        <a href="{{ route('addCompanyForm') }}" class="buttons">Add New Company</a>
     </div>
 
     <div class = "stats" id = "list">
@@ -32,15 +28,15 @@
         <table class="content-table">
             <thead>
                 <tr>
-                    <th>Company ID</th>
                     <th>Company Name</th>
+                    <th>Company Email</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($companies as $company)
                 <tr>
-                    <td>{{$company->userID}}</td>
                     <td>{{$company->name}}</td>
+                    <td>{{$company->email}}</td>
                 </tr> 
                 @endforeach
             </tbody>
