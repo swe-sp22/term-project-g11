@@ -30,6 +30,7 @@
                 <tr>
                     <th>Company Name</th>
                     <th>Company Email</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                 <tr>
                     <td>{{$company->name}}</td>
                     <td>{{$company->email}}</td>
+                    <td><a href="{{ route('removeCompany.action' , $company->userID) }}" class="buttons">Remove From System</a></td>
                 </tr> 
                 @endforeach
             </tbody>

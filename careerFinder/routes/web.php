@@ -40,3 +40,6 @@ Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCo
 
 //Store form data in DB route
 Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
+
+//Delete Company From DB route
+Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');

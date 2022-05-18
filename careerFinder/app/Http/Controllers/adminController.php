@@ -18,7 +18,7 @@ class adminController extends Controller
     public function index()
     {
         $count = DB::table('users')->where('role', 2)->count();
-        $cols = DB::table('users')->select('name','email')->where('role',2)->get();
+        $cols = DB::table('users')->select('userID','name','email')->where('role',2)->get();
         $data['count'] = $count;
         $data['companies'] = $cols;
         return view('admin.index',$data);
@@ -98,9 +98,10 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        
     }
 
     /**
@@ -111,6 +112,7 @@ class adminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = DB::table('users')->where('userID', $id)->delete();
+        return redirect()->route('adminRoute');
     }
 }
