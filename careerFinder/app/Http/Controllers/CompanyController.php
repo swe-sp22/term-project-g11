@@ -11,11 +11,17 @@ use App\Models\Applications;
 class CompanyController extends Controller
 {
     public function companyHomePage(){
-        return view('companyDashboard');
+        $userInfo = Users::select('email','name')->where('userID','=',session('LoggedUser'))->first();
+        $posts = JobPost::select('jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')->where('companyID','=',session('LoggedUser'))->get();
+        $data['companyName'] = $userInfo->name;
+        $data['companyEmail'] = $userInfo->email;
+        $data['postsCount'] = $posts->count();
+        $data['posts'] = $posts;
+        return view('company.companyDashboard', $data);
     }
 
     public function postJob(){
-        return view('postJob');
+        return view('company.postJob');
     }
 
     public function postJob_action(Request $request){
