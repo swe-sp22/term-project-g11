@@ -7,12 +7,17 @@ use App\Models\Users;
 use App\Models\JobPost;
 use App\Models\JobCategory;
 use App\Models\Applications;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
     public function companyHomePage(){
         $userInfo = Users::select('email','name')->where('userID','=',session('LoggedUser'))->first();
-        $posts = JobPost::select('jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')->where('companyID','=',session('LoggedUser'))->get();
+        $posts = JobPost::select('jobID',DB::raw('COUNT(applications.jobSeekerID) AS countApp'),'jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->groupBy('job_posts.jobID','jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')
+        ->leftJoin('applications','applications.jobPostID','job_posts.jobID')
+        ->where('companyID','=',session('LoggedUser'))->get();
         $data['companyName'] = $userInfo->name;
         $data['companyEmail'] = $userInfo->email;
         $data['postsCount'] = $posts->count();

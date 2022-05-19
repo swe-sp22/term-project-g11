@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
+            $table->bigIncrements('appID');
             $table->unsignedBigInteger('jobPostID');
             $table->unsignedBigInteger('jobSeekerID');
             $table->string('applicantName',30);
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->text('experience');
             $table->text('coverLetter');
             $table->timestamps();
-            $table->primary(['jobPostID','jobSeekerID']);
             $table->foreign('jobPostID')->references('jobID')->on('job_posts');
             $table->foreign('jobSeekerID')->references('userID')->on('users');
         });

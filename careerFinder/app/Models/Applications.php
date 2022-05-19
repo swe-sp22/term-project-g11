@@ -10,9 +10,11 @@ class Applications extends Model
     use HasFactory;
 
     protected $table = 'applications';
-    protected $primaryKey = ['jobPostID','jobSeekerID'];
+    protected $primaryKey = 'appID';
 
     protected $fillable = [
+        'jobPostID',
+        'jobSeekerID',
         'applicantName',
         'phoneNumber',
         'email',
