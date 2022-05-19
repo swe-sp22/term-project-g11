@@ -50,7 +50,11 @@
         <h3>{{$post->jobRequirments}}</h3>
         <a href="#"  class="btn">view applicants</a>
         <br>
-        <a href="#"  class="btn">Delete Job</a>
+        <form action="{{ route('deleteJob', $post->jobID) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" class="btn" value="Delete Job">
+        </form>
     </div>
     @endforeach
     </div>

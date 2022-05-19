@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('categoryID');
             $table->date('deadline');
             $table->timestamps();
-            $table->foreign('companyID')->references('userID')->on('users');
-            $table->foreign('categoryID')->references('categoryID')->on('job_categories');
+            $table->foreign('companyID')->references('userID')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('categoryID')->references('categoryID')->on('job_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

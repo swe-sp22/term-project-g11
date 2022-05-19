@@ -66,4 +66,8 @@ class CompanyController extends Controller
             return back()->with('fail', 'Something went wrong try again later!');
         }
     }
+    public function deleteJobPost($id){
+        JobPost::where('jobID','=',$id)->delete();
+        return redirect()->back();
+    }
 }
