@@ -14,11 +14,7 @@ class JobPost extends Model
 
     protected $fillable = [
         'jobTitle',
-        'jobLocation',
-        'jobDescription',
-        'jobRequirments',
-        'companyID',
-        'categoryID',
+        'jobDescripton',
         'deadline',
     ];
 }

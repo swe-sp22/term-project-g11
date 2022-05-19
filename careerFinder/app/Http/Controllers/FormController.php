@@ -16,11 +16,11 @@ class FormController extends Controller
         $data['id'] =$ID; 
         return view ('applyform',$data);
     }
-    protected function setKeysForSaveQuery(Builder $query)
-    {
-        return $query->where('jobPostID', $this->getAttribute('jobPostID'))
-            ->where('jobSeekerID', $this->getAttribute('jobSeekerID'));
-    }
+    // protected function setKeysForSaveQuery(Builder $query)
+    // {
+    //     return $query->where('jobPostID', $this->getAttribute('jobPostID'))
+    //         ->where('jobSeekerID', $this->getAttribute('jobSeekerID'));
+    // }
     public function applyaction(Request $request,$ID)
     {
          // validate requests
@@ -46,7 +46,7 @@ class FormController extends Controller
             'experience' => $request->experience,
             'coverLetter' => $request->coverletter,
         ]);
-        return $application;
+        // return $application;
         $save = $application->save();
         if($save){
             return back()->with('success', 'Application registered successfully!');
