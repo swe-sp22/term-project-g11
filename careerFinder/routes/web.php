@@ -37,5 +37,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/postJob', [CompanyController::class, 'postJob'])->name('postJob');
     Route::post('/postJob', [CompanyController::class, 'postJob_action'])->name('postJob.action');
     Route::delete('/postJob/{id}', [CompanyController::class, 'deleteJobPost'])->name('deleteJob');
+    Route::get('/jobApplicants/{id}', [CompanyController::class, 'applicantsJob'])->name('applicants');
     # jobSeeker
 });

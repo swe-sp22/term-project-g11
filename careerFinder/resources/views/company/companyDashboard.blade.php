@@ -16,7 +16,7 @@
     <div class="cbox-container">
         <div class="cbox">
             <div class="cimage">
-                <img src="{{ url('images/company.jpg') }}" alt="companyProfile">
+                <img src="{{ url('images/company.png') }}" alt="companyProfile">
             </div>
             <div class="cContent">
                 <div class="cicons">
@@ -48,7 +48,7 @@
         <h3>{{$post->jobDescription}}</h3>
         <h3><span>Job Requirments: </span></h3>
         <h3>{{$post->jobRequirments}}</h3>
-        <a href="#"  class="btn">view applicants</a>
+        <a href="{{ route('applicants', $post->jobID) }}"  class="btn">view applicants</a>
         <br>
         <form action="{{ route('deleteJob', $post->jobID) }}" method="POST">
             @csrf

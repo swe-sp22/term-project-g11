@@ -70,4 +70,15 @@ class CompanyController extends Controller
         JobPost::where('jobID','=',$id)->delete();
         return redirect()->back();
     }
+    public function applicantsJob($id){
+        $jobDetails = JobPost::select('jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')
+        ->where('jobID','=',$id)->first();
+        $applicants = Applications::select('applicantName','email','phoneNumber','faculty','graduationYear','experience','coverLetter')
+        ->where('applications.jobPostID','=',$id)->get();
+        $data['jobDetails'] = $jobDetails;
+        $data['applicants'] = $applicants;
+        $data['applicantsCount'] = $applicants->count();
+        return view('company.applicants', $data);
+    }
 }

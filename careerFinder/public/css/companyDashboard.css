@@ -12,7 +12,7 @@
 }
 .cbox-container .cbox{
     width: 700px;
-    background: #2c3e50;
+    background: #570057;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 10px #0007;
@@ -71,6 +71,7 @@
 .cbox-container .cbox .cContent .cinfo h2:hover{
     color: #fff;
 }
+/* job post style */
 .pcontainer{
     min-height: 50vh;
     width: 100vh;
@@ -128,6 +129,33 @@
 .pcard:hover::after{
     clip-path: circle(100%);
 }
+/*applicants style*/
+.tcard{
+    min-height: 50px;
+    width: 950px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 5px;
+    margin: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+.tcard h1{
+    font-size: 35px;
+    padding: 20px 0;
+    color: #444;
+}
+.tcard h3{
+    font-size: 15px;
+    color: #666;
+}
+.tcard h3 span{
+    color: var(--blue);
+}
 @media(max-width: 980px){
     .cbox-container {
         min-height: 70vh;
@@ -153,5 +181,8 @@
     }
     .cbox-container .cbox .cContent{
         padding: 30px 5px;
+    }
+    .pcontainer{
+        min-height: 75vh;
     }
 }
