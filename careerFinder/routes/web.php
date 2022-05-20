@@ -40,7 +40,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/postJob', [CompanyController::class, 'postJob_action'])->name('postJob.action');
     # jobSeeker
     Route::get('/jobsfeed', [JobSeekerController::class, 'jobsfeed'])->name('jobseekerDashboard');
-    Route::get('/jobsform/{ID?}', [FormController::class, 'applyform'])->name('form');
-    Route::post('/jobsform/{ID?}', [FormController::class, 'applyaction'])->name('apply.action');
+    Route::get('/jobsform/{ID}', [FormController::class, 'applyform'])->name('form');
+    Route::post('/jobsform/{ID}', [FormController::class, 'applyaction'])->name('apply.action');
 
 });

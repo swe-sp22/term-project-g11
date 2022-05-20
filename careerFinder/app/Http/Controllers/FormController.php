@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobPost;
 use App\Models\Applications;
-use Illuminate\Database\Eloquent\Builder;
 
 class FormController extends Controller
 {
@@ -16,11 +15,6 @@ class FormController extends Controller
         $data['id'] =$ID; 
         return view ('applyform',$data);
     }
-    // protected function setKeysForSaveQuery(Builder $query)
-    // {
-    //     return $query->where('jobPostID', $this->getAttribute('jobPostID'))
-    //         ->where('jobSeekerID', $this->getAttribute('jobSeekerID'));
-    // }
     public function applyaction(Request $request,$ID)
     {
          // validate requests
@@ -33,7 +27,6 @@ class FormController extends Controller
             'experience' => 'required',
             'coverletter' => 'required',
         ]);
-        // return $request->coverletter;
         // insert data into database
         $application = new Applications([
             'jobPostID' => $ID,
