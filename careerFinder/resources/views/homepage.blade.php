@@ -19,7 +19,7 @@
     <div class="content">
         <h3>your dream job <span>is waiting</span></h3>
         <p>find jobs, employment & career opportunities</p>
-        <a href="#" class="btn">search now</a>
+        <a href="{{ route('login') }}" class="btn">search now</a>
     </div>
     <div class="image">
         <img src="{{ url('images/home.png') }}" alt="home page image">

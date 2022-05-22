@@ -44,18 +44,12 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/jobsfeed', [JobSeekerController::class, 'jobsfeed'])->name('jobseekerDashboard');
     Route::get('/jobsform/{ID}', [FormController::class, 'applyform'])->name('form');
     Route::post('/jobsform/{ID}', [FormController::class, 'applyaction'])->name('apply.action');
-
-
-
-
+    # admin
     //add new company route
     Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
-
     //Store form data in DB route
     Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
-
     //Delete Company From DB route
     Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
-
 });
 
