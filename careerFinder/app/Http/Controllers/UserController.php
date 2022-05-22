@@ -59,13 +59,10 @@ class UserController extends Controller
                 // set user ID into session
                 $request->session()->put('LoggedUser', $userInfo->userID);
                 if($userInfo->role == 1){
-                    //return redirect()->route('adminDashboard');
                     return redirect()->route('adminRoute');
                 }else if($userInfo->role == 2){
                     return redirect()->route('companyDashboard');
-                    //return $userInfo->role;
                 }else{
-                    //return redirect()->route('jobseekerDashboard');
                     return redirect()->route('jobseekerDashboard');
                 }
             }else{

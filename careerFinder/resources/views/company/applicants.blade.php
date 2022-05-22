@@ -18,7 +18,7 @@
         <div class="pcard">
             <h1>{{ $jobDetails->jobTitle }}</h1>
             <h3><span>Category Name: </span>{{ $jobDetails->categoryName }}</h3>
-            <h3><span>Number of applicants: </span>$applicantsCount</h3>
+            <h3><span>Number of applicants: </span>{{ $applicantsCount }}</h3>
             <h3><span>Location: </span>{{ $jobDetails->jobLocation }}</h3>
             <h3><span>Deadline: </span>{{ $jobDetails->deadline }}</h3>
             <h3><span>Job Description: </span></h3>
