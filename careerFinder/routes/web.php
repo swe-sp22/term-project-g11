@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobSeekerController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,14 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/dashboard', [CompanyController::class, 'companyHomePage'])->name('companyDashboard');
     Route::get('/postJob', [CompanyController::class, 'postJob'])->name('postJob');
     Route::post('/postJob', [CompanyController::class, 'postJob_action'])->name('postJob.action');
+    Route::delete('/postJob/{id}', [CompanyController::class, 'deleteJobPost'])->name('deleteJob');
+    Route::get('/jobApplicants/{id}', [CompanyController::class, 'applicantsJob'])->name('applicants');
     # jobSeeker
+    Route::get('/jobsfeed', [JobSeekerController::class, 'jobsfeed'])->name('jobseekerDashboard');
+    Route::get('/jobsform/{ID}', [FormController::class, 'applyform'])->name('form');
+    Route::post('/jobsform/{ID}', [FormController::class, 'applyaction'])->name('apply.action');
+
+
 
 
     //add new company route
@@ -47,5 +56,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
     //Delete Company From DB route
     Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
+
 });
 
