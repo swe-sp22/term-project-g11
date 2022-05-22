@@ -13,6 +13,7 @@ class Applications extends Model
     protected $primaryKey = ['jobPostID','jobSeekerID'];
 
     protected $fillable = [
+        'applicantName',
         'phoneNumber',
         'email',
         'faculty',

@@ -21,7 +21,7 @@ class AuthCheck
         }
 
         if(session()->has('LoggedUser') && ($request->path() == '/' || $request->path() == 'login' || $request->path() == 'register')){
-            return back();
+            return redirect()->back();
         }
         return $next($request)->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
                               ->header('Pragma', 'no-cache')
