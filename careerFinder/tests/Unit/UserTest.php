@@ -15,12 +15,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_login_form()
-    {
-        $response = $this->get('/login');
-
-        $response->assertStatus(200);
-    }
+    
 
     //Checking validation
     
@@ -57,12 +52,22 @@ class UserTest extends TestCase
     public function test_register(){
         $response = [
             'name' => 'merna',
-            'email' => 'selmmy@gmail.com',
+            'email' => 'selmyy@gmail.com',
             'password' => 'merna10iii',
             'confirmpassword' => 'merna10iii',
         ];
         //$this->post(route('register.action'),$response)->assertSessionHasErrors(['email']);
-        $this->post(route('register.action'),$response)->assertSessionDoesntHaveErrors(['email']);
+        $this->post(route('register.action'),$response)->assertSessionDoesntHaveErrors();
     }
+    // public function test_register(){
+    //     $response = [
+    //         'name' => 'merna',
+    //         'email' => 'selmmy@gmail.com',
+    //         'password' => 'merna10iii',
+    //         'confirmpassword' => 'merna10iii',
+    //     ];
+    //     //$this->post(route('register.action'),$response)->assertSessionHasErrors(['email']);
+    //     $this->post(route('register.action'),$response)->assertSessionDoesntHaveErrors(['email']);
+    // }
 
 }
