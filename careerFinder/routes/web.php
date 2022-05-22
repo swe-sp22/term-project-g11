@@ -31,10 +31,21 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     # login & register view
     Route::get('/register', [UserController::class, 'register'])->name('register');
     Route::get('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/adminDashboard', [adminController::class, 'adminHome'])->name('adminRoute');
+    Route::get('/admin/index', [adminController::class, 'index'])->name('adminRoute');
     # company
     Route::get('/dashboard', [CompanyController::class, 'companyHomePage'])->name('companyDashboard');
     Route::get('/postJob', [CompanyController::class, 'postJob'])->name('postJob');
     Route::post('/postJob', [CompanyController::class, 'postJob_action'])->name('postJob.action');
     # jobSeeker
+
+
+    //add new company route
+    Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
+
+    //Store form data in DB route
+    Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
+
+    //Delete Company From DB route
+    Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
 });
+
