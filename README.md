@@ -1,1 +1,2 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7705439&assignment_repo_type=AssignmentRepo)
+This is the term project for the Software Engineering Course. We developed a Career Finder system using PHP, Blade, HTML and CSS using Laravel Framework. We also used Laravel's Eloquent to interact with the database.
+The project design, modeling and testing is all explained in details in the project report.
