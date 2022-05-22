@@ -165,7 +165,24 @@
                     </div>
                 </div>
                 <div class="post_body">
-                        <p>{{$post->jobDescription}}</p>
+                        <h2 style="color: blue">Job Title:</h2>
+                        <h3><p>{{$post->jobTitle}}</p></h3>
+                </div>
+                <div class="post_body">
+                        <h2 style="color: blue">Location:</h2>
+                        <h3><p>{{$post->jobLocation}}</p></h3>
+                </div>
+                <div class="post_body">
+                    <h2 style="color: blue">Job Description:</h2>
+                        <h3><p>{{$post->jobDescription}}</p></h3>
+                </div>
+                <div class="post_body">
+                    <h2 style="color: blue">Job Requirements:</h2>
+                        <h3><p>{{$post->jobRequirments}}</p></h3>
+                </div>
+                <div class="post_body">
+                    <h2 style="color: blue">Deadline:</h2>
+                        <h3><p>{{$post->deadline}}</p></h3>
                 </div>
                 <div class="feed_inputOptions">
                     {{-- <div class="inputOption">
