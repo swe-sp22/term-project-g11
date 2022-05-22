@@ -6,11 +6,10 @@ use App\Models\Users;
 
 use Tests\TestCase;
 
-use Database\Factories\UserFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
+    // use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -50,5 +49,25 @@ class UserTest extends TestCase
         $request = 'aa@hotmail.com';
         $this->assertTrue(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $request) == FALSE);
     }
+    public function test_register(){
+        $response = [
+            'name' => 'merna',
+            'email' => 'selmyy@gmail.com',
+            'password' => 'merna10iii',
+            'confirmpassword' => 'merna10iii',
+        ];
+        //$this->post(route('register.action'),$response)->assertSessionHasErrors(['email']);
+        $this->post(route('register.action'),$response)->assertSessionDoesntHaveErrors();
+    }
+    // public function test_register(){
+    //     $response = [
+    //         'name' => 'merna',
+    //         'email' => 'selmmy@gmail.com',
+    //         'password' => 'merna10iii',
+    //         'confirmpassword' => 'merna10iii',
+    //     ];
+    //     //$this->post(route('register.action'),$response)->assertSessionHasErrors(['email']);
+    //     $this->post(route('register.action'),$response)->assertSessionDoesntHaveErrors(['email']);
+    // }
 
 }
