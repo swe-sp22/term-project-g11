@@ -7,15 +7,26 @@ use App\Models\Users;
 use App\Models\JobPost;
 use App\Models\JobCategory;
 use App\Models\Applications;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
     public function companyHomePage(){
-        return view('companyDashboard');
+        $userInfo = Users::select('email','name')->where('userID','=',session('LoggedUser'))->first();
+        $posts = JobPost::select('jobID',DB::raw('COUNT(applications.jobSeekerID) AS countApp'),'jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->groupBy('job_posts.jobID','jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')
+        ->leftJoin('applications','applications.jobPostID','job_posts.jobID')
+        ->where('companyID','=',session('LoggedUser'))->get();
+        $data['companyName'] = $userInfo->name;
+        $data['companyEmail'] = $userInfo->email;
+        $data['postsCount'] = $posts->count();
+        $data['posts'] = $posts;
+        return view('company.companyDashboard', $data);
     }
 
     public function postJob(){
-        return view('postJob');
+        return view('company.postJob');
     }
 
     public function postJob_action(Request $request){
@@ -54,5 +65,20 @@ class CompanyController extends Controller
         }else{
             return back()->with('fail', 'Something went wrong try again later!');
         }
+    }
+    public function deleteJobPost($id){
+        JobPost::where('jobID','=',$id)->delete();
+        return redirect()->back();
+    }
+    public function applicantsJob($id){
+        $jobDetails = JobPost::select('jobTitle','jobLocation','jobDescription','jobRequirments','deadline','categoryName')
+        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')
+        ->where('jobID','=',$id)->first();
+        $applicants = Applications::select('applicantName','email','phoneNumber','faculty','graduationYear','experience','coverLetter')
+        ->where('applications.jobPostID','=',$id)->get();
+        $data['jobDetails'] = $jobDetails;
+        $data['applicants'] = $applicants;
+        $data['applicantsCount'] = $applicants->count();
+        return view('company.applicants', $data);
     }
 }

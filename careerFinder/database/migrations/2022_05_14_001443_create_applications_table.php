@@ -25,9 +25,8 @@ return new class extends Migration
             $table->text('experience');
             $table->text('coverLetter');
             $table->timestamps();
-            // $table->primary(['jobPostID','jobSeekerID']);
-            $table->foreign('jobPostID')->references('jobID')->on('job_posts');
-            $table->foreign('jobSeekerID')->references('userID')->on('users');
+            $table->foreign('jobPostID')->references('jobID')->on('job_posts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('jobSeekerID')->references('userID')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

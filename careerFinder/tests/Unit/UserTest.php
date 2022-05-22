@@ -16,7 +16,6 @@ class UserTest extends TestCase
      * @return void
      */
 
-
     //Checking validation
     
     public function test_database()
