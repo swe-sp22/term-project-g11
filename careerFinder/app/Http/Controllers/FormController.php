@@ -39,7 +39,6 @@ class FormController extends Controller
             'experience' => $request->experience,
             'coverLetter' => $request->coverletter,
         ]);
-        // return $application;
         $save = $application->save();
         if($save){
             return back()->with('success', 'Application registered successfully!');

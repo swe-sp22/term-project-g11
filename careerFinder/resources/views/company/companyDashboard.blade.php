@@ -48,7 +48,7 @@
         <h3>{{$post->jobDescription}}</h3>
         <h3><span>Job Requirments: </span></h3>
         <h3>{{$post->jobRequirments}}</h3>
-        <a href="{{ route('applicants', $post->jobID) }}"  class="btn">view applicants</a>
+        <a href="{{ route('applicants', $post->jobID) }}"  class="btn">view applications</a>
         <br>
         <form action="{{ route('deleteJob', $post->jobID) }}" method="POST">
             @csrf
