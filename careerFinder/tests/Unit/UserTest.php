@@ -15,7 +15,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    
+
 
     //Checking validation
     
