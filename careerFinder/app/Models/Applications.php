@@ -16,11 +16,11 @@ class Applications extends Model
         'jobPostID',
         'jobSeekerID',
         'applicantName',
-        'phoneNumber',
         'email',
+        'phoneNumber',
         'faculty',
+        'graduationYear',
         'experience',
         'coverLetter',
-        'graduationYear',
     ];
 }

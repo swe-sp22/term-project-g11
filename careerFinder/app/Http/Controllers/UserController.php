@@ -66,7 +66,7 @@ class UserController extends Controller
                     //return $userInfo->role;
                 }else{
                     //return redirect()->route('jobseekerDashboard');
-                    return $userInfo->role;
+                    return redirect()->route('jobseekerDashboard');
                 }
             }else{
                 return back()->with('fail', 'Incorrect password Please Try again');

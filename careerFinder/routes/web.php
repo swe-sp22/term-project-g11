@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobSeekerController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     # login & register view
     Route::get('/register', [UserController::class, 'register'])->name('register');
     Route::get('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/adminDashboard', [adminController::class, 'adminHome'])->name('adminRoute');
+    Route::get('/admin/index', [adminController::class, 'index'])->name('adminRoute');
     # company
     Route::get('/dashboard', [CompanyController::class, 'companyHomePage'])->name('companyDashboard');
     Route::get('/postJob', [CompanyController::class, 'postJob'])->name('postJob');
@@ -39,4 +41,21 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::delete('/postJob/{id}', [CompanyController::class, 'deleteJobPost'])->name('deleteJob');
     Route::get('/jobApplicants/{id}', [CompanyController::class, 'applicantsJob'])->name('applicants');
     # jobSeeker
+    Route::get('/jobsfeed', [JobSeekerController::class, 'jobsfeed'])->name('jobseekerDashboard');
+    Route::get('/jobsform/{ID}', [FormController::class, 'applyform'])->name('form');
+    Route::post('/jobsform/{ID}', [FormController::class, 'applyaction'])->name('apply.action');
+
+
+
+
+    //add new company route
+    Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
+
+    //Store form data in DB route
+    Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
+
+    //Delete Company From DB route
+    Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
+
 });
+
