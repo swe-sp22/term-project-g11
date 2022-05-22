@@ -15,13 +15,8 @@ class JobSeekerController extends Controller
         $User=Users::select('name','email')->where('userID','=',session('LoggedUser'))->first();
         $Job=JobPost::select('jobTitle','jobDescription','name','deadline','categoryName','jobID')
         ->join('users','users.userID','=','job_posts.companyID')
-        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')
+        ->join('job_categories','job_categories.categoryID','=','job_posts.categoryID')->where('job_posts.deadline','>',Carbon::now()->format('Y-m-d'))
         ->get();
-        // $Job=JobPost::join('users','users.userID','=','job_posts.companyID')->get();
-        $today = Carbon::today()->year;
-        $data['carbon'] = $today;
-        $data['db'] = $Job[0]->deadline;
-        return $data;
         $userInfo['name'] =$User->name;
         $userInfo['email'] = $User->email;
         $userInfo['posts'] = $Job;
