@@ -1,29 +1,3 @@
-{{-- <html lang="en">
-<head>
-    <title>Google Form</title>
-    <link rel="stylesheet" href="{{ url('css/form.css') }}">
-</head>
-<body>
-    <div class="form">
-        <div title-div>
-            <h1>JOB</h1>
-            <p>Job Description</p>
-            <p>Required</p>
-        </div>
-
-        <div class="name-div">
-            <div class="name">What is your name></div>
-            <div class="input-div"><input type="input" name="answer" placeholder="Your answer"></div>
-        </div>
-
-    </div>
-
-
-
-</body>
-</html> --}}
-
-
 @extends('layout')
 
 @section('title', 'Career Finder')
