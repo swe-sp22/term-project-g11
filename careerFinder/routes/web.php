@@ -33,13 +33,15 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/admin/index', [adminController::class, 'index'])->name('adminRoute');
     # company
     # jobSeeker
+
+
+    //add new company route
+    Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
+
+    //Store form data in DB route
+    Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
+
+    //Delete Company From DB route
+    Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
 });
 
-//add new company route
-Route::get('/admin/addNewCompany', [adminController::class, 'add'])->name('addCompanyForm');
-
-//Store form data in DB route
-Route::post('/admin/addNewCompany', [adminController::class, 'store'])->name('addCompany.action');
-
-//Delete Company From DB route
-Route::get('delete/{name?}', [adminController::class, 'destroy'])->name('removeCompany.action');
